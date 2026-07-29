@@ -1,0 +1,163 @@
+/* Responsive Breakpoints Rules */
+
+/* Layout Shell Grid System */
+.app-layout {
+  display: grid;
+  grid-template-columns: 260px 1fr 340px;
+  gap: 1.5rem;
+  max-width: 1380px;
+  margin: 0 auto;
+  padding: 1.5rem;
+  min-height: 100vh;
+}
+
+/* Sidebar Columns */
+.app-left-sidebar {
+  position: sticky;
+  top: 1.5rem;
+  height: calc(100vh - 3rem);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-center-feed {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.app-right-sidebar {
+  position: sticky;
+  top: 1.5rem;
+  height: calc(100vh - 3rem);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+/* Media Query: Large Desktops (1440px+) */
+@media (min-width: 1440px) {
+  .app-layout {
+    grid-template-columns: 280px 1fr 360px;
+    gap: 2rem;
+  }
+}
+
+/* Media Query: Standard Laptops / Small Desktops (1024px - 1279px) */
+@media (max-width: 1279px) {
+  .app-layout {
+    grid-template-columns: 220px 1fr 300px;
+    gap: 1.25rem;
+    padding: 1.25rem;
+  }
+}
+
+/* Media Query: Tablets (768px - 1023px) */
+@media (max-width: 1023px) {
+  .app-layout {
+    grid-template-columns: 80px 1fr;
+    gap: 1.25rem;
+    padding: 1rem;
+  }
+
+  .app-right-sidebar {
+    display: none;
+  }
+
+  /* Compact Left Sidebar for Tablets */
+  .sidebar-text {
+    display: none;
+  }
+  
+  .sidebar-nav-item {
+    justify-content: center;
+    padding: 0.8rem;
+  }
+
+  .sidebar-logo-text {
+    display: none;
+  }
+
+  .sidebar-post-btn-text {
+    display: none;
+  }
+
+  .sidebar-post-btn {
+    width: 48px;
+    height: 48px;
+    padding: 0;
+    border-radius: var(--radius-full);
+  }
+}
+
+/* Media Query: Mobile Screens (<= 767px) */
+@media (max-width: 767px) {
+  .app-layout {
+    display: block;
+    padding: 1rem 0.75rem 5rem 0.75rem;
+  }
+
+  .app-left-sidebar {
+    display: none;
+  }
+
+  .app-right-sidebar {
+    display: none;
+  }
+
+  .app-center-feed {
+    gap: 1rem;
+  }
+
+  /* Hide header nav links on mobile; show drawer trigger */
+  .landing-nav-links {
+    display: none;
+  }
+
+  .landing-hero-grid {
+    grid-template-columns: 1fr !important;
+    text-align: center;
+  }
+
+  .landing-hero-ctas {
+    justify-content: center;
+  }
+
+  .messages-layout {
+    grid-template-columns: 1fr !important;
+  }
+
+  .messages-chat-pane.mobile-hidden {
+    display: none;
+  }
+
+  .messages-convos-pane.mobile-hidden {
+    display: none;
+  }
+}
+
+/* Extra Small Mobile (<= 425px) */
+@media (max-width: 425px) {
+  .container {
+    padding: 0 1rem;
+  }
+
+  .post-card-actions {
+    gap: 0.5rem;
+  }
+
+  .post-action-btn span {
+    display: none;
+  }
+
+  .profile-banner {
+    height: 140px !important;
+  }
+
+  .profile-avatar-wrapper {
+    margin-top: -45px !important;
+  }
+}
