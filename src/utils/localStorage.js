@@ -17,6 +17,25 @@ const KEYS = {
   SETTINGS: 'socialla_settings'
 };
 
+const DATA_VERSION_KEY = 'socialla_v3_30_items';
+
+// Auto-sync version check to overwrite stale cached browser data with 30+ new items
+(function autoSyncDataVersion() {
+  try {
+    const version = localStorage.getItem(DATA_VERSION_KEY);
+    if (!version) {
+      localStorage.setItem(KEYS.USERS, JSON.stringify(INITIAL_USERS));
+      localStorage.setItem(KEYS.POSTS, JSON.stringify(INITIAL_POSTS));
+      localStorage.setItem(KEYS.STORIES, JSON.stringify(INITIAL_STORIES));
+      localStorage.setItem(KEYS.NOTIFICATIONS, JSON.stringify(INITIAL_NOTIFICATIONS));
+      localStorage.setItem(KEYS.MESSAGES, JSON.stringify(INITIAL_CONVERSATIONS));
+      localStorage.setItem(DATA_VERSION_KEY, 'true');
+    }
+  } catch (err) {
+    console.error('Data sync error:', err);
+  }
+})();
+
 // Safe JSON parser helper
 const getItem = (key, fallback) => {
   try {
