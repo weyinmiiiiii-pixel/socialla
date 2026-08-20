@@ -84,7 +84,7 @@ const RightSidebar = () => {
           <h3>Suggested People</h3>
         </div>
         <div className="suggested-list">
-          {users.slice(0, 3).map(user => {
+          {users.slice(0, 6).map(user => {
             const isFollowing = !!followingMap[user.id];
             return (
               <div key={user.id} className="suggested-item">
@@ -111,6 +111,12 @@ const RightSidebar = () => {
             );
           })}
         </div>
+        <button
+          className="btn btn-secondary btn-sm w-full mt-3"
+          onClick={() => navigate('/explore')}
+        >
+          View All People in Explore
+        </button>
       </div>
 
       {/* Online Friends Quick Chat */}
@@ -120,7 +126,7 @@ const RightSidebar = () => {
           <h3>Online Friends</h3>
         </div>
         <div className="online-list">
-          {users.slice(0, 4).map(user => (
+          {users.slice(0, 6).map(user => (
             <div
               key={user.id}
               className="online-item"

@@ -181,12 +181,22 @@ const Login = () => {
 
         .auth-card {
           width: 100%;
-          max-width: 440px;
-          padding: 2.25rem;
+          max-width: 520px;
+          padding: 2.5rem;
           display: flex;
           flex-direction: column;
           gap: 1.5rem;
           animation: modalScaleIn 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .auth-card .input-field {
+          width: 100%;
+          padding: 0.85rem 1rem 0.85rem 2.8rem;
+          font-size: 0.98rem;
+        }
+
+        .auth-card .input-wrapper.has-right-icon .input-field {
+          padding-right: 2.8rem;
         }
 
         .auth-header {

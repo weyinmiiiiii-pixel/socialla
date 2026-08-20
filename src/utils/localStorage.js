@@ -38,10 +38,16 @@ const setItem = (key, value) => {
 
 // Users
 export const getUsers = () => {
-  const users = getItem(KEYS.USERS, null);
+  let users = getItem(KEYS.USERS, null);
   if (!users) {
     setItem(KEYS.USERS, INITIAL_USERS);
     return INITIAL_USERS;
+  }
+  const existingIds = new Set(users.map(u => u.id));
+  const missingUsers = INITIAL_USERS.filter(u => !existingIds.has(u.id));
+  if (missingUsers.length > 0) {
+    users = [...users, ...missingUsers];
+    setItem(KEYS.USERS, users);
   }
   return users;
 };
@@ -55,10 +61,16 @@ export const removeCurrentUser = () => localStorage.removeItem(KEYS.CURRENT_USER
 
 // Posts
 export const getPosts = () => {
-  const posts = getItem(KEYS.POSTS, null);
+  let posts = getItem(KEYS.POSTS, null);
   if (!posts) {
     setItem(KEYS.POSTS, INITIAL_POSTS);
     return INITIAL_POSTS;
+  }
+  const existingIds = new Set(posts.map(p => p.id));
+  const missingPosts = INITIAL_POSTS.filter(p => !existingIds.has(p.id));
+  if (missingPosts.length > 0) {
+    posts = [...missingPosts, ...posts];
+    setItem(KEYS.POSTS, posts);
   }
   return posts;
 };

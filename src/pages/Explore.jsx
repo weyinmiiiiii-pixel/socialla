@@ -163,22 +163,28 @@ const Explore = () => {
 
         .explore-media-grid {
           display: grid;
-          grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-          gap: 0.75rem;
+          grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+          gap: 1.25rem;
         }
 
         .explore-grid-item {
           position: relative;
           aspect-ratio: 1;
-          border-radius: var(--radius-md);
+          border-radius: var(--radius-lg);
           overflow: hidden;
           cursor: pointer;
+          box-shadow: var(--shadow-sm);
         }
 
         .explore-grid-item img {
           width: 100%;
           height: 100%;
           object-fit: cover;
+          transition: transform 0.4s ease;
+        }
+
+        .explore-grid-item:hover img {
+          transform: scale(1.08);
         }
 
         .explore-grid-overlay {

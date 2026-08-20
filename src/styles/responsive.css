@@ -5,9 +5,10 @@
   display: grid;
   grid-template-columns: 260px 1fr 340px;
   gap: 1.5rem;
-  max-width: 1380px;
+  max-width: 1680px;
+  width: 100%;
   margin: 0 auto;
-  padding: 1.5rem;
+  padding: 1.5rem 2rem;
   min-height: 100vh;
 }
 
@@ -23,6 +24,7 @@
 
 .app-center-feed {
   min-width: 0;
+  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
@@ -43,6 +45,13 @@
   .app-layout {
     grid-template-columns: 280px 1fr 360px;
     gap: 2rem;
+    max-width: 1780px;
+    padding: 1.5rem 3rem;
+  }
+  .app-layout.messages-layout-wrapper {
+    grid-template-columns: 280px 1fr !important;
+    max-width: 100% !important;
+    padding: 1rem 1.5rem !important;
   }
 }
 
@@ -52,6 +61,11 @@
     grid-template-columns: 220px 1fr 300px;
     gap: 1.25rem;
     padding: 1.25rem;
+  }
+  .app-layout.messages-layout-wrapper {
+    grid-template-columns: 240px 1fr !important;
+    max-width: 100% !important;
+    padding: 1rem !important;
   }
 }
 
