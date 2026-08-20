@@ -100,10 +100,16 @@ export const saveNotifications = (notifs) => setItem(KEYS.NOTIFICATIONS, notifs)
 
 // Messages
 export const getConversations = () => {
-  const convos = getItem(KEYS.MESSAGES, null);
+  let convos = getItem(KEYS.MESSAGES, null);
   if (!convos) {
     setItem(KEYS.MESSAGES, INITIAL_CONVERSATIONS);
     return INITIAL_CONVERSATIONS;
+  }
+  const existingIds = new Set(convos.map(c => c.id));
+  const missingConvos = INITIAL_CONVERSATIONS.filter(c => !existingIds.has(c.id));
+  if (missingConvos.length > 0) {
+    convos = [...convos, ...missingConvos];
+    setItem(KEYS.MESSAGES, convos);
   }
   return convos;
 };
